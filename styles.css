@@ -6,6 +6,24 @@ body {
   flex-direction: column;
 }
 
+
+header{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  text-align: center;
+  width: 100%;
+  padding: 0.5em;
+  padding-left: 1rem;
+  line-height: 1.5em;
+  border-bottom: 1.5px solid rgb(11, 201, 201);
+  border-bottom-left-radius: 40%;
+  border-bottom-right-radius: 30%;
+  border-bottom-style: groove;
+
+}
+
 #form{
   flex-wrap: wrap;
 }
@@ -122,25 +140,6 @@ a :hover{
   font-weight: normal;
 }
 
-footer{
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  text-align: center;
-  width: 100%;
-  padding: 0.5em;
-  padding-left: 1rem;
-  line-height: 1.5em;
-  border-top: 1.5px solid rgb(11, 201, 201);
-  border-top-left-radius: 1.5rem;
-  border-top-style: groove;
-  border-bottom: 0;
-  
-  position: absolute;
-  bottom: 0
-}
-
 @media (max-width: 992px) {
   .card {
     width: 95%;
@@ -206,15 +205,10 @@ footer{
       margin-bottom: .75em;
     }   
 
-    footer{
-      position: static;
-      transform: translate(0, 0);
-      margin-top: 7rem;
-    }
 }
 
 @media(max-width: 400px){
-  footer{
+  header{
     flex-direction: column;
     justify-content: center;
     align-items: center;
