@@ -41,6 +41,7 @@ body {
   justify-content: center;
   align-items: center;
   margin-bottom: 2em;
+  margin-top: 2em;
 }
 
 .img-container {
@@ -205,6 +206,11 @@ footer{
       margin-bottom: .75em;
     }   
 
+    footer{
+      position: static;
+      transform: translate(0, 0);
+      margin-top: 7rem;
+    }
 }
 
 @media(max-width: 400px){
@@ -218,12 +224,4 @@ footer{
     margin-top: 0.75em;
   }
 
-}
-
-@media(max-width: 200px){
-  footer{
-    position: static;
-    transform: translate(0, 0);
-    margin-top: 5rem;
-  }
 }
