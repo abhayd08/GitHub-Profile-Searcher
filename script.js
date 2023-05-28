@@ -13,7 +13,6 @@ class GitHub {
   
     createUserCard = async () => {
       const userDetailsObj = await this.getUserDetails();
-  
       const mainElement = document.getElementById("main");
   
       const cardElement = document.createElement("div");
@@ -21,6 +20,10 @@ class GitHub {
       cardElement.innerHTML = `<div class = "img-container">
                                   <img src = ${userDetailsObj.avatar_url} class = "img-fluid" alt = "avatar-${userDetailsObj.login}"></img>
                                </div>
+
+                               <a href = "${userDetailsObj.html_url}" target = "_blank" id = "github-link">
+                               <i class="fa-brands fa-github fa-2xl"></i>
+                               </a>
   
                                <div class = "card-body text-white">
   
@@ -33,21 +36,24 @@ class GitHub {
                                   </div>
   
                                   <div class = "card-text row">
-                                        <div class = "col col-6 details mb-2">Followers:
+                                        <span class = "col col-6 details mb-2">Followers:
                                           <span class = "detail-content"> ${userDetailsObj.followers}</span>
-                                        </div>
-                                        <div class = "col col-6 details mb-2"> Following:
+                                        </span>
+                                        <span class = "col col-6 details mb-2"> Following:
                                           <span class = "detail-content"> ${userDetailsObj.following}</span>
-                                        </div>
-                                        <div class = "col col-6 details mb-2"> Repos:
+                                        </span>
+                                        <span class = "col col-6 details mb-2"> Repos:
                                           <span class = "detail-content"> ${userDetailsObj.public_repos}</span>
-                                        </div>
-                                        <div class = "col col-6 details mb-2"> Twitter:
-                                          <span class = "detail-content"> ${userDetailsObj["twitter_username"]}</span>
-                                        </div>
-                                        <div class = "col col-6 details mb-2"> Location:
+                                        </span>
+                                        <span class = "col col-6 details mb-2"> Twitter:
+                                          <a href = "https://www.twitter.com/${userDetailsObj.twitter_username}" target = "_blank">
+                                            <span class = "detail-content"> ${userDetailsObj["twitter_username"]}</span>
+                                            <i id = "twitter-icon" class="fa-brands fa-twitter fa-bounce fa-xl"></i>
+                                          </a>
+                                        </span>
+                                        <span class = "col col-6 details mb-2"> Location:
                                           <span class = "detail-content"> ${userDetailsObj.location}</span>
-                                        </div>
+                                        </span>
                                   </div>
                                   
                                </div>
@@ -60,17 +66,50 @@ class GitHub {
     };
   }
   
+
   (() => {
     const formElement = document.getElementById("form");
     const inputElement = document.getElementById("search");
+    const mainElement = document.getElementById("main");
+    const cardContainer = document.getElementById("card-container");
+    const submitElement = document.getElementById("submit");
+    const submitButton = document.getElementById("submit-button");
+
+    const loadIcon = document.createElement("div")
+    loadIcon.innerHTML = `<i class="fa-sharp fa-solid fa-spinner fa-spin fa-2xl" style="color: #12e293;"></i>`
+    loadIcon.setAttribute("style", "display: none")
+    cardContainer.append(loadIcon)
   
     formElement.addEventListener("submit", async (event) => {
       event.preventDefault();
-  
-      const mainElement = document.getElementById("main");
-      mainElement.textContent = " ";
+      mainElement.style.display = "none"
+      mainElement.textContent = ""
+      loadIcon.style.display = "block"
+      submitButton.setAttribute("disabled", "")
+      
+      submitElement.addEventListener("mouseover", ()=>{
+        submitButton.style["background-color"] = "pink";
+      })
+      submitElement.addEventListener("mouseout", ()=>{
+        submitButton.style["background-color"] = "";
+      })
+      
+      setTimeout(async ()=>{    
+      mainElement.style.display = "block"
+      loadIcon.style.display = "none"
+      submitButton.removeAttribute("disabled");
+
+      submitElement.addEventListener("mouseover", ()=>{
+        submitButton.style["background-color"] = "palegreen";
+      })
+      submitElement.addEventListener("mouseout", ()=>{
+        submitButton.style["background-color"] = "";
+      })
+      
       const githubDetails = new GitHub(inputElement.value);
       await githubDetails.createUserCard();
-    });
+      }, 1350);
+
+    })
   })();
   

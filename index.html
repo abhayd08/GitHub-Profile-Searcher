@@ -9,13 +9,7 @@
       integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
       crossorigin="anonymous"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./styles.css" />
     <title>Github Profiles</title>
   </head>
@@ -23,10 +17,37 @@
     <div class="container">
       <form id="form" class="mb-3 d-flex">
         <input required type="text" id="search" placeholder="Enter User Id" />
-        <button type="submit">Wanna Search?</button>
+        <a id = "submit">
+            <button id = "submit-button" type="submit">
+                <i class="fa-brands fa-searchengin fa-2xl" style="color: #0ab85e;"></i>
+            </button>
+        </a>
       </form>
-      <main id="main"></main>
+      <div id = "card-container">
+        <main id="main"></main>
+      </div>
     </div>
+    <footer>
+      <strong class = "text-primary">ωเƭɦ
+        <i class="fa-solid fa-face-smile fa-shake fa-xl" style="color: #0eafd8;"></i>
+        ɓყ αɓɦαყ ∂เאเƭ
+      </strong>
+        
+      <div id = "personal-links">
+        <a class = "mb-6" href = "https://www.linkedin.com/in/abhayd08" target = "_blank">
+          <i class="fa-brands fa-linkedin fa-2xl mb-6" style="color: #0a66c2;"></i>
+        </a>
+        <a href = "https://www.github.com/abhayd08" target = "_blank">
+          <i class="fa-brands fa-square-github fa-2xl" style="color: #1f3251;"></i>
+        </a>
+        <a href = "https://www.twitter.com/abhayd_8" target = "_blank">
+          <i class="fa-brands fa-square-twitter fa-2xl" style="color: #0a66c2;"></i>
+        </a>
+        <a href = "https://instagram.com/abhayd_08?igshid=ZDc4ODBmNjlmNQ==" target = "_blank">
+          <i class="fa-brands fa-instagram fa-2xl" style="color: #e61e89;"></i>
+        </a>
+      </div>
+    </footer>
     <script src="./script.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
