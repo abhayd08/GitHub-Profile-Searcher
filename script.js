@@ -100,7 +100,7 @@ class GitHub {
       submitButton.removeAttribute("disabled");
 
       submitElement.addEventListener("mouseover", ()=>{
-        submitButton.style["background-color"] = "palegreen";
+        submitButton.style["background-color"] = "";
       })
       submitElement.addEventListener("mouseout", ()=>{
         submitButton.style["background-color"] = "";
