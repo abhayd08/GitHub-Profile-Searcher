@@ -143,7 +143,10 @@ a :hover{
 
 #alert-element{
   padding: 1.2em;
-  margin-top: 3rem;
+  margin-top: 5rem;
+  width: 90%;
+  margin: auto;
+  text-align: center;
   line-height: 1rem;
   border-top-left-radius: 2rem;
   border-bottom-right-radius: 2rem;

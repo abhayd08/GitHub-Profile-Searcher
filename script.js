@@ -100,6 +100,7 @@ class GitHub {
         submitButton.style["background-color"] = "";
       })
       
+
       setTimeout(async ()=>{    
       mainElement.style.display = "block"
       loadIcon.style.display = "none"
@@ -115,13 +116,17 @@ class GitHub {
       try{
       const githubDetails = new GitHub(inputElement.value);
       await githubDetails.createUserCard(); 
+      
+      inputElement.value = ""
+
       }
+
       catch(error){
       console.log("There's an error in the username you entered.")
       
       const  alertElement = document.createElement("div")
       alertElement.setAttribute("id", "alert-element")
-      alertElement.textContent = "Uhh Ohh!, there's an Error in the Username you Entered. Retry :)"
+      alertElement.textContent = "𝖴𝗁𝗁 𝖮𝗁𝗁!, 𝖳𝗁𝖾 𝖴𝗌𝖾𝗋 𝖽𝗈𝖾𝗌𝗇'𝗍 𝖤𝗑𝗂𝗌𝗍. 𝖱𝖾𝗍𝗋𝗒 𝗐𝗂𝗍𝗁 𝗍𝗁𝖾 𝖢𝗈𝗋𝗋𝖾𝖼𝗍 𝖴𝗌𝖾𝗋𝗇𝖺𝗆𝖾 :)"
       mainElement.append(alertElement)
       submitButton.setAttribute("disabled", "")
 
@@ -130,8 +135,10 @@ class GitHub {
       })
       submitElement.addEventListener("mouseout", ()=>{
         submitButton.style["background-color"] = "";
+
       })
       
+
       setTimeout(()=>{
         alertElement.style.display = "none"
         submitButton.removeAttribute("disabled");
@@ -141,8 +148,9 @@ class GitHub {
         })
         submitElement.addEventListener("mouseout", ()=>{
           submitButton.style["background-color"] = "";
-
+        
         })
+      inputElement.value = ""
 
       }, 1300)
       
