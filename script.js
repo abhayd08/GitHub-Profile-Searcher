@@ -2,19 +2,27 @@ class GitHub {
     constructor(username) {
       this.username = username;
     }
-  
+
     getUserDetails = async () => {
+      try{
       const fetchUserDetails = await fetch(
         `https://api.github.com/users/${this.username}`
       );
+      if(fetchUserDetails.ok){
       const userDetails = await fetchUserDetails.json();
-      return userDetails;
-    };
+      return userDetails
+      }
+      }
+      catch{
+        return null
+      }
+      }
   
     createUserCard = async () => {
+
       const userDetailsObj = await this.getUserDetails();
       const mainElement = document.getElementById("main");
-  
+      
       const cardElement = document.createElement("div");
       cardElement.classList.add("card");
       cardElement.innerHTML = `<div class = "img-container">
@@ -61,8 +69,6 @@ class GitHub {
                                </div>`;
   
       mainElement.append(cardElement);
-  
-      return userDetailsObj;
     };
   }
   
@@ -106,10 +112,45 @@ class GitHub {
         submitButton.style["background-color"] = "";
       })
       
+      try{
       const githubDetails = new GitHub(inputElement.value);
-      await githubDetails.createUserCard();
-      }, 1350);
+      await githubDetails.createUserCard(); 
+      }
+      catch(error){
+      console.log("There's an error in the username you entered.")
+      
+      const  alertElement = document.createElement("div")
+      alertElement.setAttribute("id", "alert-element")
+      alertElement.textContent = "Uhh Ohh!, there's an Error in the Username you Entered. Retry :)"
+      mainElement.append(alertElement)
+      submitButton.setAttribute("disabled", "")
+
+      submitElement.addEventListener("mouseover", ()=>{
+        submitButton.style["background-color"] = "pink";
+      })
+      submitElement.addEventListener("mouseout", ()=>{
+        submitButton.style["background-color"] = "";
+      })
+      
+      setTimeout(()=>{
+        alertElement.style.display = "none"
+        submitButton.removeAttribute("disabled");
+
+        submitElement.addEventListener("mouseover", ()=>{
+          submitButton.style["background-color"] = "";
+        })
+        submitElement.addEventListener("mouseout", ()=>{
+          submitButton.style["background-color"] = "";
+
+        })
+
+      }, 1300)
+      
+      }  
+
+      }, 1100)
 
     })
+
   })();
   
